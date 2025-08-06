@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/static/estilos.css">
+</head>
+<body class="login-body">
+
+  <!-- LOGIN -->
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+    <p class="login-crearcuenta" onclick="window.location.href='/static/registro.html'">Crear cuenta</p>
+  </div>
+
+  <script>
+    async function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!username || !password) {
+        alert("Por favor complete todos los campos");
+        return;
+      }
+
+      try {
+        // SIMULACIÓN de login — cambiá por tu backend si es real
+        const res = await fetch("/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+if (!data.success) {
+  alert("Usuario o contraseña incorrectos");
+  return;
+}
+
+localStorage.setItem("usuario_id", data.usuario_id);
+window.location.href = "/static/index.html";
+
+      } catch (err) {
+        console.error("Error al iniciar sesión:", err);
+        alert("Ocurrió un error en el login");
+      }
+    }
+  </script>
+</body>
+</html>

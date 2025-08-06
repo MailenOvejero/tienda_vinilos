@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Perfil de Usuario</title>
+  <style>
+    /* Fondo para todo el body perfil */
+    body.perfil-body {
+      background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      backdrop-filter: brightness(0.5);
+      margin: 0;
+    }
+
+    /* Contenedores con fondo oscuro translúcido */
+    .perfil-contenedor {
+      background-color: rgba(20, 20, 20, 0.9);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      margin-bottom: 1.8rem;
+    }
+
+    /* Título principal estilo Netflix */
+    .perfil-titulo {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #e50914; /* rojo Netflix */
+      text-align: center;
+      letter-spacing: 3px;
+      margin-bottom: 2.2rem;
+      user-select: none;
+      text-shadow: 0 0 10px #e50914aa;
+    }
+
+    /* Info usuario estilo limpio y elegante */
+    .perfil-info-usuario p {
+      font-size: 1.15rem;
+      margin: 0.4rem 0;
+      letter-spacing: 0.5px;
+      color: #ddd;
+    }
+
+    /* Historial compras título */
+    .perfil-historial-titulo {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+      border-bottom: 2px solid #e50914;
+      padding-bottom: 0.3rem;
+    }
+
+    /* Tarjeta de compra estilo "tarjeta Netflix" */
+    .perfil-compra {
+      background-color: #222;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .perfil-compra:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+    }
+
+    .perfil-compra p {
+      margin: 0.25rem 0;
+      font-size: 1rem;
+      color: #eee;
+    }
+
+    .perfil-compra strong {
+      color: #e50914;
+      font-size: 1.15rem;
+    }
+
+    /* Línea divisoria suave */
+    .perfil-hr {
+      border: 0;
+      height: 1px;
+      background: #444;
+      margin: 0.6rem 0 1rem 0;
+    }
+
+    /* Botón cerrar sesión estilo Netflix */
+    .perfil-boton-cerrar,
+    .perfil-boton-volver {
+      background-color: #e50914;
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 0.9rem 2rem;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.25s ease;
+      box-shadow: 0 4px 8px rgba(229,9,20,0.7);
+      user-select: none;
+      align-self: center;
+      margin-top: 1rem;
+      text-transform: uppercase;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .perfil-boton-cerrar:hover,
+    .perfil-boton-volver:hover {
+      background-color: #b00610;
+    }
+
+  </style>
+</head>
+<body class="perfil-body">
+  <h1 class="perfil-titulo">👤 Mi Perfil</h1>
+
+  <div id="info-usuario" class="perfil-contenedor perfil-info-usuario"></div>
+
+  <div id="historial-compras" class="perfil-contenedor"></div>
+
+  <button onclick="cerrarSesion()" class="perfil-boton-cerrar">Cerrar sesión</button>
+  
+  <!-- Botón para volver al index -->
+  <a href="/" class="perfil-boton-volver" role="button">Volver al inicio</a>
+
+  <script>
+    const usuario_id = localStorage.getItem("usuario_id");
+
+    if (!usuario_id) {
+      alert("Iniciá sesión primero");
+      window.location.href = "/";
+    }
+
+    fetch(`/usuario/${usuario_id}`)
+      .then(res => res.json())
+      .then(data => {
+        const usuario = data.usuario;
+        const compras = data.compras;
+
+        document.getElementById("info-usuario").innerHTML = `
+          <p>🧑 Usuario: ${usuario.username}</p>
+          <p>ID: ${usuario.id}</p>
+        `;
+
+        let comprasHTML = `<h3 class="perfil-historial-titulo">🛍️ Historial de compras:</h3>`;
+        if (compras.length === 0) {
+          comprasHTML += "<p>No hay compras registradas aún.</p>";
+        } else {
+          compras.forEach(v => {
+            comprasHTML += `
+              <div class="perfil-compra">
+                <p><strong>${v.banda}</strong> - ${v.nombre} (${v.genero})</p>
+                <p>Cantidad: ${v.cantidad} | Total: $${v.precio_total} | Estado: ${v.estado}</p>
+                <p>📅 Fecha: ${new Date(v.fecha).toLocaleString()}</p>
+              </div>
+              <hr class="perfil-hr">
+            `;
+          });
+        }
+
+        document.getElementById("historial-compras").innerHTML = comprasHTML;
+      });
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuario_id");
+      window.location.href = "/";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda de Vinilos - Home</title>
+  <link rel="stylesheet" href="/static/estilos.css" />
+</head>
+<body>
+
+<header>
+  <div class="home-logo">
+    <img src="/static/img/vinilos/tiendadevinilos-removebg-preview.png" alt="Logo Tienda de Vinilos" />
+  </div>
+</header>
+
+<!-- Barra secundaria -->
+<nav class="home-subnav home-header">
+  <button id="home-btnInicio" class="subnav-btn">Inicio</button>
+
+  <button class="subnav-btn">Lanzamientos</button>
+  <button class="subnav-btn">Ofertas</button>
+
+  <div class="subnav-dropdown">
+    <button class="subnav-btn dropdown-toggle">Estilos</button>
+    <div class="dropdown-menu" id="dropdown-estilos">
+      <button class="dropdown-item" data-genero="Rock">Rock</button>
+      <button class="dropdown-item" data-genero="Pop">Pop</button>
+      <button class="dropdown-item" data-genero="Jazz">Jazz</button>
+      <button class="dropdown-item" data-genero="Metal">Metal</button>
+      <button class="dropdown-item" data-genero="Black Metal">Black Metal</button>
+      <button class="dropdown-item" data-genero="Deathcore">Deathcore</button>
+    </div>
+  </div>
+
+  <input type="text" id="home-inputBanda" class="home-filtros__input" placeholder="Nombre de la banda" />
+  <button id="home-btnFiltrar" class="home-btn home-btn--primary">Buscar</button>
+  <button id="home-btnLogin" class="subnav-btn">Iniciar sesión</button>
+  <button id="home-btnCarrito" class="subnav-btn" style="display: none;" onclick="window.location.href='/static/carrito.html'">Carrito</button>
+<button id="home-btnPerfil" class="subnav-btn" style="display: none;" onclick="window.location.href='/static/usuario.html'">Mi Perfil</button>
+
+
+</nav>
+
+<!-- Carrusel -->
+<section class="home-carousel" aria-label="Promociones destacadas">
+  <div class="home-carousel__track">
+    <div class="home-carousel__slide"><img src="/static/img/vinilos/carru3.jpg" alt="Disco Rock" /></div>
+    <div class="home-carousel__slide"><img src="/static/img/vinilos/carru2.jpg" alt="Disco Jazz" /></div>
+    <div class="home-carousel__slide"><img src="/static/img/vinilos/carru1.jpg" alt="Disco Pop" /></div>
+  </div>
+
+
+  <button class="home-carousel__button home-carousel__button--prev" aria-label="Anterior">&#9664;</button>
+  <button class="home-carousel__button home-carousel__button--next" aria-label="Siguiente">&#9654;</button>
+</section>
+
+<!-- Lista de vinilos -->
+<div id="home-lista" class="home-lista"></div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

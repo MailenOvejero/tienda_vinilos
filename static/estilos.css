@@ -1,0 +1,569 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #111;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.home-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.home-btn--primary {
+  background-color: #ff3366;
+  color: white;
+}
+
+.home-btn--primary:hover {
+  background-color: #e52e5c;
+}
+
+.home-logo {
+  width: 100%;
+  background-image: url(img/vinilos/fondobanner1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ 
+  text-align: center;
+}
+
+
+.home-logo img {
+max-width: 20%;
+}
+
+/* Subnav */
+.home-subnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #222;
+  flex-wrap: wrap;
+}
+
+.subnav-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.subnav-btn:hover {
+  background-color: #444;
+  border-radius: 4px;
+}
+
+/* Dropdown */
+.subnav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  content: " ▼";
+  font-size: 0.8rem;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.dropdown-item {
+  color: white;
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  border: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #444;
+}
+
+.subnav-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Carousel */
+.home-carousel {
+  position: relative;
+  overflow: hidden;
+ 
+}
+
+.home-carousel__track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.home-carousel__slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.home-carousel__slide img {
+  width: 100%;
+  display: block;
+}
+
+.home-carousel__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.home-carousel__button:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.home-carousel__button--prev { left: 10px; }
+.home-carousel__button--next { right: 10px; }
+
+/* Lista de vinilos */
+.home-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.vinilo {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.vinilo:hover {
+  transform: scale(1.02);
+}
+
+.vinilo-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .home-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+/* Estilo para el título del género */
+#home-lista h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Estilo para el contenedor de bandas detectado por su estructura */
+#home-lista > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Estilo para los botones de bandas */
+#home-lista > div button {
+  padding: 8px 16px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  width: 220px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  transition: background 0.3s;
+}
+
+#home-lista > div button:hover {
+  background-color: #ebebeb;
+}
+/* Estilo moderno para botones de bandas debajo del género */
+#home-lista .contenedor-bandas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+#home-lista .contenedor-bandas button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff3366;
+  color: white;
+  cursor: pointer;
+  width: 240px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#home-lista .contenedor-bandas button:hover {
+  background-color: #e52e5c;
+  transform: translateY(-2px);
+}/* ===== LOGIN ESTILO NETFLIX (MODIFICADO) ===== */
+.login-body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('/static/img/vinilos/vinilos_fondo') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: rgba(0, 0, 0, 0.75); /* más opaco */
+  padding: 48px 36px;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.login-container h2 {
+  margin-bottom: 28px;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.login-container input {
+  width: 92%;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.login-container input::placeholder {
+  color: #bbb;
+}
+
+.login-container input:focus {
+  background-color: #444;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 14px;
+  background-color: #e50914;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-container button:hover {
+  background-color: #f6121d;
+  transform: scale(1.02);
+}
+
+.login-crearcuenta {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #ccc;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.login-crearcuenta:hover {
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+/* Fondo para todo el body perfil (usa un contenedor para no afectar todo el body si quieres) */
+.perfil-body {
+  background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+  backdrop-filter: brightness(0.5);
+}
+
+/* Contenedores con fondo oscuro translúcido */
+.perfil-contenedor {
+  background-color: rgba(20, 20, 20, 0.9);
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  margin-bottom: 1.8rem;
+}
+
+/* Título principal estilo Netflix */
+.perfil-titulo {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #e50914; /* rojo Netflix */
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 2.2rem;
+  user-select: none;
+  text-shadow: 0 0 10px #e50914aa;
+}
+
+/* Info usuario estilo limpio y elegante */
+.perfil-info-usuario p {
+  font-size: 1.15rem;
+  margin: 0.4rem 0;
+  letter-spacing: 0.5px;
+  color: #ddd;
+}
+
+/* Historial compras título */
+.perfil-historial-titulo {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+  border-bottom: 2px solid #e50914;
+  padding-bottom: 0.3rem;
+}
+
+/* Tarjeta de compra estilo "tarjeta Netflix" */
+.perfil-compra {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.perfil-compra:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+}
+
+.perfil-compra p {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  color: #eee;
+}
+
+.perfil-compra strong {
+  color: #e50914;
+  font-size: 1.15rem;
+}
+
+/* Línea divisoria suave */
+.perfil-hr {
+  border: 0;
+  height: 1px;
+  background: #444;
+  margin: 0.6rem 0 1rem 0;
+}
+
+/* Botón cerrar sesión estilo Netflix */
+.perfil-boton-cerrar {
+  background-color: #e50914;
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 4px 8px rgba(229,9,20,0.7);
+  user-select: none;
+  align-self: center;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.perfil-boton-cerrar:hover {
+  background-color: #b00610;
+}
+
+/* Scroll si el historial crece */
+#historial-compras {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar personalizado para navegadores Webkit */
+#historial-compras::-webkit-scrollbar {
+  width: 8px;
+}
+
+#historial-compras::-webkit-scrollbar-track {
+  background: #111;
+  border-radius: 10px;
+}
+
+#historial-compras::-webkit-scrollbar-thumb {
+  background-color: #e50914;
+  border-radius: 10px;
+  border: 2px solid #111;
+}
+
+
+
+
+
+
+
+/* Estilos tipo Netflix para carrito de vinilos, con clases únicas */
+
+/* Fondo y body */
+.nfx-body {
+  background-color: #141414;
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Título */
+.nfx-carrito-titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #e50914;
+  text-transform: uppercase;
+}
+
+/* Contenedor de ítems */
+.nfx-carrito-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Cada ítem del vinilo */
+.nfx-carrito-item {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  cursor: default;
+}
+
+.nfx-carrito-item:hover {
+  background-color: #e50914;
+  color: white;
+}
+
+/* Total */
+.nfx-carrito-total {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* Botón */
+.nfx-carrito-boton {
+  display: block;
+  margin: 2rem auto 0 auto;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #e50914aa;
+  transition: background-color 0.3s ease;
+}
+
+.nfx-carrito-boton:hover {
+  background-color: #b0070f;
+}

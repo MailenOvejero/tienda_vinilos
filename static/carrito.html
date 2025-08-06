@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tu Carrito</title>
+  <link rel="stylesheet" href="/static/estilos.css" />
+  <style>
+    /* Estilos tipo Netflix para carrito de vinilos, con clases únicas */
+
+    /* Fondo y body */
+    .nfx-body {
+      background-color: #141414;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    /* Título */
+    .nfx-carrito-titulo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      letter-spacing: 2px;
+      color: #e50914;
+      text-transform: uppercase;
+    }
+
+    /* Contenedor de ítems */
+    .nfx-carrito-contenido {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    /* Cada ítem del vinilo */
+    .nfx-carrito-item {
+      background-color: #222;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+      cursor: default;
+    }
+
+    .nfx-carrito-item:hover {
+      background-color: #e50914;
+      color: white;
+    }
+
+    /* Total */
+    .nfx-carrito-total {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    /* Botón */
+    .nfx-carrito-boton {
+      display: block;
+      margin: 2rem auto 0 auto;
+      background-color: #e50914;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px #e50914aa;
+      transition: background-color 0.3s ease;
+    }
+
+    .nfx-carrito-boton:hover {
+      background-color: #b0070f;
+    }
+  </style>
+</head>
+<body class="nfx-body">
+  <h1 class="nfx-carrito-titulo">Carrito de Compras</h1>
+
+  <div id="contenido-carrito" class="nfx-carrito-contenido"></div>
+
+  <h3 id="total" class="nfx-carrito-total">Total: $0</h3>
+
+  <button class="nfx-carrito-boton" onclick="comprar()">Confirmar Compra</button>
+
+  <script>
+    const usuario_id = localStorage.getItem("usuario_id");
+
+    if (!usuario_id) {
+      alert("Iniciá sesión primero");
+      window.location.href = "/";
+    }
+
+    fetch(`/carrito?usuario_id=${usuario_id}`)
+      .then(res => res.json())
+      .then(data => {
+        let html = "";
+        let total = 0;
+        data.forEach(item => {
+          html += `<p class="nfx-carrito-item">${item.banda} - ${item.nombre} x${item.cantidad} - $${item.precio}</p>`;
+          total += item.precio * item.cantidad;
+        });
+        document.getElementById("contenido-carrito").innerHTML = html;
+        document.getElementById("total").innerText = "Total: $" + total;
+      });
+
+    function comprar() {
+      fetch('/comprar', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({usuario_id})
+      })
+      .then(() => {
+        alert("Compra exitosa");
+        window.location.href = "/static/compra_exitosa.html";
+      });
+    }
+  </script>
+</body>
+</html>
