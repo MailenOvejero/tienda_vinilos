@@ -1,0 +1,369 @@
+/* ====== GENERAL ====== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+/* ====== HEADER ====== */
+header {
+  background-image: url('img/banner-vinilos.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 30px 10px;
+  text-align: center;
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #ffcc00;
+  margin: 0;
+  text-shadow: 2px 2px 5px #000;
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: auto;
+  z-index: 2;
+}
+
+/* ====== NAV ====== */
+nav {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 15px 20px;
+  position: relative;
+}
+
+
+.nav-buscador {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Input del buscador */
+.nav-buscador input {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+}
+
+
+.nav-buscador button {
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.nav-buscador button:hover {
+  background-color: #ffd633;
+}
+
+
+.nav-carrito {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btnCarrito {
+  display: inline-block;
+  background-color: #ffcc00;
+  color: #000;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btnCarrito:hover {
+  background-color: #ffd633;
+}
+
+/* Globitoooooo del carrito */
+.contador {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+}
+
+
+
+/* =========================
+   estilos gneales
+========================= */
+
+#contenidoPrincipal {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* Filas centradas */
+.filaBotonera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.tituloInline {
+  font-size: 1.4rem;
+  color: #ffcc00;
+  margin: 0;
+}
+
+/* Botones */
+.botoneraHorizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.botoneraHorizontal button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botoneraHorizontal button:hover {
+  background-color: #555;
+}
+
+/* ssecciones */
+.tituloSeccion {
+  font-size: 2rem;
+  margin: 25px 0;
+  color: #ffcc00;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Tarjetas */
+.tarjetasFull {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.tarjeta {
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  width: 220px;
+  text-align: center;
+  color: #fff;
+}
+
+.tarjeta img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.tarjeta h3 {
+  margin: 10px 0 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.tarjeta .banda {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.tarjeta p {
+  margin: 5px 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.tarjeta button {
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.tarjeta button:hover {
+  background-color: #e6b800;
+}
+
+/* ====== Formulario de pgo ====== */
+.formPago {
+  background-color: #111;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.7);
+}
+
+.formPago form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.grupoForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.fila {
+  display: flex;
+  gap: 15px;
+}
+
+.grupoForm label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #ffcc00;
+  font-size: 1rem;
+}
+
+.grupoForm input {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.grupoForm input:focus {
+  outline: 2px solid #ffcc00;
+}
+
+/* iconos de tarjetttts */
+.tarjetasIconos {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+}
+
+.tarjetasIconos img {
+  width: 45px;
+  height: auto;
+}
+
+/* confirmar Pago */
+.btnCarrito {
+  background: #ffcc00;
+  color: #000;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+
+.btnCarrito:hover {
+  background: #e6b800;
+}
+
+/* =========================
+   ESTILOS  CARRITO.HTML
+========================= */
+
+/* contenedor principal */
+.carritoPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Total  */
+.carritoPage #totalCarrito {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fffef9;
+  margin: 25px 0;
+}
+
+/* Btn volver*/
+.volverContenedor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btnVolver {
+  background-color: #ffcc00;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btnVolver:hover {
+  background-color: #e6b800;
+}
+
+.carritoPage .formPago {
+  width: 100%;
+
+  margin: 40px 0;
+}

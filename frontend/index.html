@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de Vinilos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="img/logo_tienda.png" alt="Logo" class="logo" />
+  </header>
+
+  <nav>
+    <div class="nav-buscador">
+      <input id="buscar" placeholder="Buscar banda..." />
+      <button id="btnGeneros">Buscar</button>
+    </div>
+
+    <div class="nav-carrito">
+      <a href="carrito.html" class="btnCarrito">
+        🛒 Carrito 
+        <span id="contadorCarrito" class="contador">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <main id="contenidoPrincipal">
+    <!-- Géneros -->
+    <section class="filaBotonera centrado">
+      <h2 class="tituloInline">🎼 Géneros</h2>
+      <div id="listaGeneros" class="botoneraHorizontal"></div>
+    </section>
+
+    <!-- Bandas -->
+    <section class="filaBotonera centrado">
+      <h2 class="tituloInline">🎤 Bandas</h2>
+      <div id="listaBandas" class="botoneraHorizontal"></div>
+    </section>
+
+    <!-- Vinilos -->
+    <section>
+      <h2 class="tituloSeccion">💿 Vinilos</h2>
+      <div id="tarjetas" class="tarjetasFull"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
